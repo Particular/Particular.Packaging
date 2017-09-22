@@ -1,11 +1,12 @@
 <Project>
 
   <PropertyGroup>
-    <Authors>NServiceBus Ltd</Authors>
+    <Authors>Particular Software</Authors>
     <Company>NServiceBus Ltd</Company>
+    <Owners>nservicebus</Owners>
     <PackageLicenseUrl>http://particular.net/LicenseAgreement</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2010-$([System.DateTime]::UtcNow.ToString(yyyy)) NServiceBus. All rights reserved</Copyright>
+    <Copyright>Copyright 2010-$([System.DateTime]::UtcNow.ToString(yyyy)) NServiceBus Ltd. All rights reserved</Copyright>
     <PackageTags Condition="'$(PackageTags)' == ''">nservicebus messaging</PackageTags>
     <PackageIconUrl>http://s3.amazonaws.com/nuget.images/NServiceBus_32.png</PackageIconUrl>
     <PackageProjectUrl>https://docs.particular.net/nuget/$(PackageId)</PackageProjectUrl>
