@@ -1,8 +1,9 @@
 <Project>
 
   <PropertyGroup>
-    <Authors>NServiceBus Ltd</Authors>
+    <Authors>Particular Software</Authors>
     <Company>NServiceBus Ltd</Company>
+    <Owners>nservicebus</Owners>
     <PackageLicenseUrl>http://particular.net/LicenseAgreement</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Copyright>Copyright 2010-$([System.DateTime]::UtcNow.ToString(yyyy)) NServiceBus. All rights reserved</Copyright>
