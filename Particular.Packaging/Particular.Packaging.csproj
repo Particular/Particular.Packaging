@@ -17,6 +17,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0012">
+      <IncludeAssets>All</IncludeAssets>
+      <ExcludeAssets>None</ExcludeAssets>
+      <PrivateAssetsA>None</PrivateAssetsA>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="build\*">
       <Pack>true</Pack>
       <PackagePath>build</PackagePath>
