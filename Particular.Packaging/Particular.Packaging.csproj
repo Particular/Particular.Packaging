@@ -17,11 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0012">
-      <IncludeAssets>All</IncludeAssets>
-      <ExcludeAssets>None</ExcludeAssets>
-      <PrivateAssetsA>None</PrivateAssetsA>
-    </PackageReference>
+    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0012" PrivateAssets="None" />
   </ItemGroup>
 
   <ItemGroup>
