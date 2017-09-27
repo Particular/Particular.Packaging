@@ -8,7 +8,7 @@ Add the following package reference to your csproj:
 
 `<PackageReference Include="Particular.Packaging" Version="*" PrivateAssets="All" />`
 
-Add the following required attributes to the cspproj:
+Add the following required attributes to the csproj:
 
 ```
   <PropertyGroup>
@@ -16,12 +16,6 @@ Add the following required attributes to the cspproj:
   </PropertyGroup>
 ```
 
-additionally, if you want to create the NuGet package on build, add:
-
-`<GeneratePackageOnBuild>true</GeneratePackageOnBuild>`
-  
-  
-Remove all package dependencies to
+Remove all references to
 * NuGetPackager
 * GitVersionTask
-
