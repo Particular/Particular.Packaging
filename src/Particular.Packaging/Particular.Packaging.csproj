@@ -4,10 +4,8 @@
     <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
   </PropertyGroup>
 
-  <Import Project="build/Particular.Packaging.targets" />
-
   <PropertyGroup>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>NuGet packaging for Particular repositories</Description>
     <PackageProjectUrl>https://particular.net</PackageProjectUrl>
     <IncludeBuildOutput>false</IncludeBuildOutput>
   </PropertyGroup>
@@ -21,5 +19,7 @@
     <Content Include="build\*" PackagePath="build" />
     <Content Include="buildMultiTargeting\*" PackagePath="buildMultiTargeting" />
   </ItemGroup>
+
+  <Import Project="build/Particular.Packaging.targets" />
 
 </Project>
