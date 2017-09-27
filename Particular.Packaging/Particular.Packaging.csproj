@@ -17,14 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="build\*">
-      <Pack>true</Pack>
-      <PackagePath>build</PackagePath>
-    </Content>
-    <Content Include="buildMultiTargeting\*">
-      <Pack>true</Pack>
-      <PackagePath>buildMultiTargeting</PackagePath>
-    </Content>
+    <None Remove="build*\*" />
+    <Content Include="build\*" PackagePath="build" />
+    <Content Include="buildMultiTargeting\*" PackagePath="buildMultiTargeting" />
   </ItemGroup>
 
 </Project>
