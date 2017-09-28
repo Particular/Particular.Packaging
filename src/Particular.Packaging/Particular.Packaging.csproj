@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>NuGet packaging for Particular repositories</Description>
+    <PackageProjectUrl>https://particular.net</PackageProjectUrl>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0012" PrivateAssets="None" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="build*\*" />
+    <Content Include="build\*" PackagePath="build" />
+    <Content Include="buildMultiTargeting\*" PackagePath="buildMultiTargeting" />
+  </ItemGroup>
+
+  <Import Project="build/Particular.Packaging.targets" />
+
+</Project>
