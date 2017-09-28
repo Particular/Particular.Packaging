@@ -6,6 +6,11 @@
     <PackageProjectUrl Condition="'$(PackageProjectUrl)' == ''">https://docs.particular.net/nuget/$(PackageId)</PackageProjectUrl>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(IncludeBuildOutput)' == 'false'">
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <DocumentationFile />
+  </PropertyGroup>
+
   <Target Name="IncludePDBsInPackage" Condition="'$(IncludeBuildOutput)' != 'false'">
     <ItemGroup>
       <TfmSpecificPackageFile Include="$(OutputPath)\$(AssemblyName).pdb" PackagePath="lib/$(TargetFramework)" />
