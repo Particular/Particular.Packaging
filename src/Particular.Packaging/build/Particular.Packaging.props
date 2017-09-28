@@ -8,7 +8,6 @@
     <Copyright>© 2010-$([System.DateTime]::UtcNow.ToString(yyyy)) NServiceBus Ltd. All rights reserved.</Copyright>
     <PackageTags>nservicebus messaging</PackageTags>
     <PackageIconUrl>http://s3.amazonaws.com/nuget.images/NServiceBus_32.png</PackageIconUrl>
-    <PackageProjectUrl>https://docs.particular.net/nuget/$(PackageId)</PackageProjectUrl>
     <PackageOutputPath>..\..\nugets</PackageOutputPath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludePDBsInPackage</TargetsForTfmSpecificContentInPackage>
