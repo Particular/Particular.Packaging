@@ -1,7 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="build/Particular.Packaging.props" />
-
   <PropertyGroup>
     <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
   </PropertyGroup>
@@ -22,7 +20,5 @@
     <Content Include="build\*" PackagePath="build" />
     <Content Include="buildMultiTargeting\*" PackagePath="buildMultiTargeting" />
   </ItemGroup>
-
-  <Import Project="build/Particular.Packaging.targets" />
 
 </Project>
