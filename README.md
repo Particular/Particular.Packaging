@@ -1,6 +1,6 @@
 # Particular.Packaging
 
-Note: This package only works with csproj based packaging!
+Note: This package only works with csproj-based packaging!
 
 ## Usage
 
@@ -8,7 +8,7 @@ Add the following package reference to your csproj:
 
 `<PackageReference Include="Particular.Packaging" Version="*" PrivateAssets="All" />`
 
-Add the following required attributes to the csproj:
+The package description defaults to the package id, so add the following project to provide a real description:
 
 ```
   <PropertyGroup>
