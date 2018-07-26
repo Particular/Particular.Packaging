@@ -6,6 +6,7 @@
 
   <PropertyGroup>
     <Description>NuGet packaging for Particular repositories</Description>
+    <DevelopmentDependency>true</DevelopmentDependency>
     <PackageProjectUrl>https://particular.net</PackageProjectUrl>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
