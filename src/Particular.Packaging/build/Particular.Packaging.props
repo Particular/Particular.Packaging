@@ -3,15 +3,17 @@
   <PropertyGroup>
     <Authors Condition="'$(Authors)' == ''">Particular Software</Authors>
     <Company Condition="'$(Company)' == ''">NServiceBus Ltd</Company>
-    <PackageLicenseUrl Condition="'$(PackageLicenseUrl)' == ''">http://particular.net/LicenseAgreement</PackageLicenseUrl>
+    <PackageLicenseUrl Condition="'$(PackageLicenseUrl)' == ''">https://particular.net/licenseagreement</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance Condition="'$(PackageRequireLicenseAcceptance)' == ''">true</PackageRequireLicenseAcceptance>
     <Copyright Condition="'$(Copyright)' == ''">© 2010-$([System.DateTime]::UtcNow.ToString(yyyy)) NServiceBus Ltd. All rights reserved.</Copyright>
     <PackageTags Condition="'$(PackageTags)' == ''">nservicebus messaging</PackageTags>
-    <PackageIconUrl Condition="'$(PackageIconUrl)' == ''">http://s3.amazonaws.com/nuget.images/NServiceBus_32.png</PackageIconUrl>
+    <PackageIconUrl Condition="'$(PackageIconUrl)' == ''">https://s3.amazonaws.com/nuget.images/NServiceBus_32.png</PackageIconUrl>
     <PackageOutputPath Condition="'$(PackageOutputPath)' == ''">..\..\nugets</PackageOutputPath>
     <GeneratePackageOnBuild Condition="'$(GeneratePackageOnBuild)' == ''">true</GeneratePackageOnBuild>
     <GenerateDocumentationFile Condition="'$(GenerateDocumentationFile)' == ''">true</GenerateDocumentationFile>
-    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludePDBsInPackage</TargetsForTfmSpecificContentInPackage>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
 </Project>
