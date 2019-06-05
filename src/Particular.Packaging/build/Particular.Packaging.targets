@@ -11,4 +11,8 @@
     <DocumentationFile />
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="..\..\$(PackageLicenseFile)" Condition="Exists('..\..\$(PackageLicenseFile)')" Pack="true" PackagePath="$(PackageLicenseFile)" Visible="false" />
+  </ItemGroup>
+
 </Project>

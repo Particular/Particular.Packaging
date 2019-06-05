@@ -3,8 +3,7 @@
   <PropertyGroup>
     <Authors Condition="'$(Authors)' == ''">Particular Software</Authors>
     <Company Condition="'$(Company)' == ''">NServiceBus Ltd</Company>
-    <PackageLicenseUrl Condition="'$(PackageLicenseUrl)' == ''">https://particular.net/licenseagreement</PackageLicenseUrl>
-    <NoWarn>$(NoWarn);NU5125</NoWarn>
+    <PackageLicenseFile Condition="'$(PackageLicenseFile)' == ''">LICENSE.md</PackageLicenseFile>
     <PackageRequireLicenseAcceptance Condition="'$(PackageRequireLicenseAcceptance)' == ''">true</PackageRequireLicenseAcceptance>
     <Copyright Condition="'$(Copyright)' == ''">© 2010-$([System.DateTime]::UtcNow.ToString(yyyy)) NServiceBus Ltd. All rights reserved.</Copyright>
     <PackageTags Condition="'$(PackageTags)' == ''">nservicebus messaging</PackageTags>
