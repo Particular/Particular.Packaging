@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0012" PrivateAssets="None" />
+    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0013" PrivateAssets="None" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="None" />
     <PackageReference Update="NETStandard.Library" PrivateAssets="All" />
   </ItemGroup>
