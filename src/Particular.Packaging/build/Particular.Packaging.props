@@ -1,13 +1,14 @@
 <Project>
 
   <PropertyGroup>
+    <ParticularPackagingPackagePath>$(MSBuildThisFileDirectory)..\</ParticularPackagingPackagePath>
     <Authors Condition="'$(Authors)' == ''">Particular Software</Authors>
     <Company Condition="'$(Company)' == ''">NServiceBus Ltd</Company>
     <PackageLicenseFile Condition="'$(PackageLicenseFile)' == ''">LICENSE.md</PackageLicenseFile>
     <PackageRequireLicenseAcceptance Condition="'$(PackageRequireLicenseAcceptance)' == ''">true</PackageRequireLicenseAcceptance>
     <Copyright Condition="'$(Copyright)' == ''">© 2010-$([System.DateTime]::UtcNow.ToString(yyyy)) NServiceBus Ltd. All rights reserved.</Copyright>
     <PackageTags Condition="'$(PackageTags)' == ''">nservicebus messaging</PackageTags>
-    <PackageIconUrl Condition="'$(PackageIconUrl)' == ''">https://s3.amazonaws.com/nuget.images/NServiceBus_32.png</PackageIconUrl>
+    <PackageIcon Condition="'$(PackageIcon)' == ''">NServiceBus.png</PackageIcon>
     <PackageOutputPath Condition="'$(PackageOutputPath)' == ''">..\..\nugets</PackageOutputPath>
     <GeneratePackageOnBuild Condition="'$(GeneratePackageOnBuild)' == ''">true</GeneratePackageOnBuild>
     <GenerateDocumentationFile Condition="'$(GenerateDocumentationFile)' == ''">true</GenerateDocumentationFile>

@@ -23,6 +23,8 @@
     <None Remove="build*\*" />
     <Content Include="build\*" PackagePath="build" />
     <Content Include="buildMultiTargeting\*" PackagePath="buildMultiTargeting" />
+    <None Remove="NServiceBus.png" />
+    <Content Include="NServiceBus.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

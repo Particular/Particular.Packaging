@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <None Include="..\..\$(PackageLicenseFile)" Condition="Exists('..\..\$(PackageLicenseFile)')" Pack="true" PackagePath="$(PackageLicenseFile)" Visible="false" />
+    <None Include="$(ParticularPackagingPackagePath)$(PackageIcon)" Condition="Exists('$(ParticularPackagingPackagePath)$(PackageIcon)')" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
   </ItemGroup>
 
 </Project>
