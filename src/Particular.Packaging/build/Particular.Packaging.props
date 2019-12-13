@@ -1,6 +1,7 @@
 <Project>
 
   <PropertyGroup>
+    <IsPackable>true</IsPackable>
     <ParticularPackagingPackagePath>$(MSBuildThisFileDirectory)..\</ParticularPackagingPackagePath>
     <NoWarn>$(NoWarn);NU5128</NoWarn>
     <Authors Condition="'$(Authors)' == ''">Particular Software</Authors>
@@ -16,6 +17,14 @@
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NuGetMajorVersion>1</NuGetMajorVersion>
+    <NuGetMajorVersion Condition="'$(NuGetToolVersion)' != ''">$([System.Version]::Parse($(NuGetToolVersion)).Major)</NuGetMajorVersion>
+    <NuGetMinorVersion>0</NuGetMinorVersion>
+    <NuGetMinorVersion Condition="'$(NuGetToolVersion)' != ''">$([System.Version]::Parse($(NuGetToolVersion)).Minor)</NuGetMinorVersion>
+    <PackageIconUrl Condition="($(NuGetMajorVersion) &lt; 5 Or ($(NuGetMajorVersion) == 5 And $(NuGetMinorVersion) &lt; 3)) And '$(PackageIconUrl)' == ''">https://s3.amazonaws.com/nuget.images/NServiceBus_32.png</PackageIconUrl>
   </PropertyGroup>
 
 </Project>
