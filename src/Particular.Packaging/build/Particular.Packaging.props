@@ -1,6 +1,7 @@
 <Project>
 
   <PropertyGroup>
+    <IsPackable>true</IsPackable>
     <ParticularPackagingPackagePath>$(MSBuildThisFileDirectory)..\</ParticularPackagingPackagePath>
     <NoWarn>$(NoWarn);NU5128</NoWarn>
     <Authors Condition="'$(Authors)' == ''">Particular Software</Authors>
