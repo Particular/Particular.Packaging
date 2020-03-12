@@ -20,11 +20,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <NuGetMajorVersion>1</NuGetMajorVersion>
-    <NuGetMajorVersion Condition="'$(NuGetToolVersion)' != ''">$([System.Version]::Parse($(NuGetToolVersion)).Major)</NuGetMajorVersion>
-    <NuGetMinorVersion>0</NuGetMinorVersion>
-    <NuGetMinorVersion Condition="'$(NuGetToolVersion)' != ''">$([System.Version]::Parse($(NuGetToolVersion)).Minor)</NuGetMinorVersion>
-    <PackageIconUrl Condition="($(NuGetMajorVersion) &lt; 5 Or ($(NuGetMajorVersion) == 5 And $(NuGetMinorVersion) &lt; 3)) And '$(PackageIconUrl)' == ''">https://s3.amazonaws.com/nuget.images/NServiceBus_32.png</PackageIconUrl>
+    <ParticularPackagingNuGetMajorVersion>1</ParticularPackagingNuGetMajorVersion>
+    <ParticularPackagingNuGetMajorVersion Condition="'$(NuGetToolVersion)' != ''">$([System.Version]::Parse($(NuGetToolVersion)).Major)</ParticularPackagingNuGetMajorVersion>
+    <ParticularPackagingNuGetMinorVersion>0</ParticularPackagingNuGetMinorVersion>
+    <ParticularPackagingNuGetMinorVersion Condition="'$(NuGetToolVersion)' != ''">$([System.Version]::Parse($(NuGetToolVersion)).Minor)</ParticularPackagingNuGetMinorVersion>
+    <PackageIconUrl Condition="($(ParticularPackagingNuGetMajorVersion) &lt; 5 Or ($(ParticularPackagingNuGetMajorVersion) == 5 And $(ParticularPackagingNuGetMinorVersion) &lt; 3)) And '$(PackageIconUrl)' == ''">https://s3.amazonaws.com/nuget.images/NServiceBus_32.png</PackageIconUrl>
   </PropertyGroup>
 
 </Project>
