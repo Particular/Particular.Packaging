@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IsPackable Condition="'$(IsPackable)' == ''">true</IsPackable>
     <ParticularPackagingPackagePath>$(MSBuildThisFileDirectory)..\</ParticularPackagingPackagePath>
-    <NoWarn>$(NoWarn);NU5128</NoWarn>
+    <NoWarn>$(NoWarn);NU5128;NU5105</NoWarn>
     <Authors Condition="'$(Authors)' == ''">Particular Software</Authors>
     <Company Condition="'$(Company)' == ''">NServiceBus Ltd</Company>
     <PackageLicenseFile Condition="'$(PackageLicenseFile)' == ''">LICENSE.md</PackageLicenseFile>
