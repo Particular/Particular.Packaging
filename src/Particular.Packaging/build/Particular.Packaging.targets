@@ -16,4 +16,10 @@
     <None Include="$(ParticularPackagingPackagePath)$(PackageIcon)" Condition="Exists('$(ParticularPackagingPackagePath)$(PackageIcon)')" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
   </ItemGroup>
 
+  <Target Name="FixPackageVersion" AfterTargets="GetVersion" BeforeTargets="GenerateNuspec">
+    <PropertyGroup>
+      <PackageVersion>$(GitVersion_SemVer)</PackageVersion>
+    </PropertyGroup>
+  </Target>
+
 </Project>
