@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFrameworks>net40;netstandard1.0</TargetFrameworks>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <PropertyGroup>
