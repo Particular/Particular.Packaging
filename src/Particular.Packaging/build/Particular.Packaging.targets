@@ -22,6 +22,19 @@
     </PropertyGroup>
   </Target>
 
+  <Target Name="ConvertProjectReferenceVersionsToVersionRanges" AfterTargets="_GetProjectReferenceVersions">
+    <PropertyGroup>
+      <NumberOfProjectReferences>@(_ProjectReferencesWithVersions->Count())</NumberOfProjectReferences>
+    </PropertyGroup>
+    <ItemGroup Condition="$(NumberOfProjectReferences) &gt; 0">
+      <_ProjectReferencesWithVersionRanges Include="@(_ProjectReferencesWithVersions)">
+        <ProjectVersion>[%(_ProjectReferencesWithVersions.ProjectVersion), $([MSBuild]::Add($([System.Text.RegularExpressions.Regex]::Match('%(_ProjectReferencesWithVersions.ProjectVersion)', '^\d+').Value), '1')))</ProjectVersion>
+      </_ProjectReferencesWithVersionRanges>
+      <_ProjectReferencesWithVersions Remove="@(_ProjectReferencesWithVersions)" />
+      <_ProjectReferencesWithVersions Include="@(_ProjectReferencesWithVersionRanges)" />
+    </ItemGroup>
+  </Target>
+
   <Target Name="SuppressNuGetPathLengthWarning" AfterTargets="GetVersion" BeforeTargets="CoreCompile" Condition="'$(CI)' != '' Or '$(TEAMCITY_VERSION)' != ''">
     <PropertyGroup Condition="'$(GitVersion_BranchName)' != 'master' And $(GitVersion_BranchName.StartsWith('release-')) == false">
       <NoWarn>$(NoWarn);NU5123</NoWarn>
