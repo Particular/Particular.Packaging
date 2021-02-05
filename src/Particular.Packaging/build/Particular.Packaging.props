@@ -21,6 +21,10 @@
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
+    <CheckEolTargetFramework Condition="'$(CheckEolTargetFramework)' == ''">false</CheckEolTargetFramework>
+  </PropertyGroup>
+
   <PropertyGroup>
     <ParticularPackagingNuGetMajorVersion>1</ParticularPackagingNuGetMajorVersion>
     <ParticularPackagingNuGetMajorVersion Condition="'$(NuGetToolVersion)' != ''">$([System.Version]::Parse($(NuGetToolVersion)).Major)</ParticularPackagingNuGetMajorVersion>
