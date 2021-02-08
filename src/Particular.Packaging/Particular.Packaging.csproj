@@ -10,6 +10,7 @@
     <PackageProjectUrl>https://particular.net</PackageProjectUrl>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <BlockInvalidTargetFrameworks>false</BlockInvalidTargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +23,11 @@
     <None Remove="build*\*" />
     <Content Include="build\*" PackagePath="build" />
     <Content Include="buildMultiTargeting\*" PackagePath="buildMultiTargeting" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="BlockInvalidTargetFrameworks\*" />
+    <Content Include="BlockInvalidTargetFrameworks\*" PackagePath="BlockInvalidTargetFrameworks" />
   </ItemGroup>
 
 </Project>
