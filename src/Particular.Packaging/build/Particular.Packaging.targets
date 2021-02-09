@@ -4,6 +4,7 @@
     <PackageId Condition="'$(PackageId)' == ''">$(AssemblyName)</PackageId>
     <Description Condition="'$(Description)' == ''">$(PackageId)</Description>
     <PackageProjectUrl Condition="'$(PackageProjectUrl)' == ''">https://docs.particular.net/nuget/$(PackageId)</PackageProjectUrl>
+    <BlockInvalidTargetFrameworksPath>$(ParticularPackagingPackagePath)BlockInvalidTargetFrameworks\</BlockInvalidTargetFrameworksPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(IncludeBuildOutput)' == 'false'">
@@ -14,6 +15,13 @@
   <ItemGroup>
     <None Include="..\..\$(PackageLicenseFile)" Condition="Exists('..\..\$(PackageLicenseFile)')" Pack="true" PackagePath="$(PackageLicenseFile)" Visible="false" />
     <None Include="$(ParticularPackagingPackagePath)$(PackageIcon)" Condition="Exists('$(ParticularPackagingPackagePath)$(PackageIcon)')" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(BlockInvalidTargetFrameworks) != 'false' AND $(PackAsTool) != 'true' AND $(TargetFrameworks.Contains('netstandard')) == 'false'">
+    <None Include="$(BlockInvalidTargetFrameworksPath)BlockNetCore.targets" Condition="Exists('$(BlockInvalidTargetFrameworksPath)BlockNetCore.targets')" Pack="true" PackagePath="build\netcoreapp2.0\$(PackageId).targets" Visible="false" />
+    <None Include="$(BlockInvalidTargetFrameworksPath)BlockNetFramework.targets" Condition="Exists('$(BlockInvalidTargetFrameworksPath)BlockNetFramework.targets')" Pack="true" PackagePath="build\net461\$(PackageId).targets" Visible="false" />
+    <None Include="$(BlockInvalidTargetFrameworksPath)BlockNetStandard.targets" Condition="Exists('$(BlockInvalidTargetFrameworksPath)BlockNetStandard.targets')" Pack="true" PackagePath="build\netstandard2.0\$(PackageId).targets" Visible="false" />
+    <None Include="$(BlockInvalidTargetFrameworksPath)\_._" Condition="Exists('$(BlockInvalidTargetFrameworksPath)_._')" Pack="true" PackagePath="build\net472;build\netcoreapp2.1" Visible="false" />
   </ItemGroup>
 
   <Target Name="FixPackageVersion" AfterTargets="GetVersion" BeforeTargets="GenerateNuspec">
