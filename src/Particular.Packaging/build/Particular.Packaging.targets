@@ -17,7 +17,7 @@
     <None Include="$(ParticularPackagingPackagePath)$(PackageIcon)" Condition="Exists('$(ParticularPackagingPackagePath)$(PackageIcon)')" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
   </ItemGroup>
 
-  <ItemGroup Condition="$(BlockInvalidTargetFrameworks) != 'false' AND ($(PackageType) == '' OR $(PackageType) == 'Dependency') AND $(TargetFrameworks.Contains('netstandard')) == 'false'">
+  <ItemGroup Condition="'$(BlockInvalidTargetFrameworks)' != 'false' And ('$(PackageType)' == '' Or '$(PackageType)' == 'Dependency') And '$(TargetFrameworks.Contains(`netstandard`))' == 'false'">
     <None Include="$(BlockInvalidTargetFrameworksPath)BlockNetCore.targets" Condition="Exists('$(BlockInvalidTargetFrameworksPath)BlockNetCore.targets')" Pack="true" PackagePath="build\netcoreapp2.0\$(PackageId).targets" Visible="false" />
     <None Include="$(BlockInvalidTargetFrameworksPath)BlockNetFramework.targets" Condition="Exists('$(BlockInvalidTargetFrameworksPath)BlockNetFramework.targets')" Pack="true" PackagePath="build\net461\$(PackageId).targets" Visible="false" />
     <None Include="$(BlockInvalidTargetFrameworksPath)BlockNetStandard.targets" Condition="Exists('$(BlockInvalidTargetFrameworksPath)BlockNetStandard.targets')" Pack="true" PackagePath="build\netstandard2.0\$(PackageId).targets" Visible="false" />
@@ -44,7 +44,7 @@
   </Target>
 
   <Target Name="SuppressNuGetPathLengthWarning" AfterTargets="GetVersion" BeforeTargets="CoreCompile" Condition="'$(CI)' != '' Or '$(TEAMCITY_VERSION)' != ''">
-    <PropertyGroup Condition="'$(GitVersion_BranchName)' != 'master' And $(GitVersion_BranchName.StartsWith('release-')) == false">
+    <PropertyGroup Condition="'$(GitVersion_BranchName)' != 'master' And '$(GitVersion_BranchName.StartsWith(`release-`))' == 'false'">
       <NoWarn>$(NoWarn);NU5123</NoWarn>
     </PropertyGroup>
   </Target>
