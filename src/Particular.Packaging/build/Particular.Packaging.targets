@@ -12,6 +12,10 @@
     <DocumentationFile />
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(IncludeSourceFilesInPackage)' == 'true'">
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);AddSourceFilesToPackage</TargetsForTfmSpecificContentInPackage>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="..\..\$(PackageLicenseFile)" Condition="Exists('..\..\$(PackageLicenseFile)')" Pack="true" PackagePath="$(PackageLicenseFile)" Visible="false" />
     <None Include="$(ParticularPackagingPackagePath)$(PackageIcon)" Condition="Exists('$(ParticularPackagingPackagePath)$(PackageIcon)')" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
@@ -46,6 +50,17 @@
       </_ProjectReferencesWithVersionRanges>
       <_ProjectReferencesWithVersions Remove="@(_ProjectReferencesWithVersions)" />
       <_ProjectReferencesWithVersions Include="@(_ProjectReferencesWithVersionRanges)" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="AddSourceFilesToPackage">
+    <ItemGroup>
+      <_File Remove="@(_File)"/>
+      <_File Include="$(MSBuildProjectDirectory)\**\*.cs" TargetDir="contentFiles/cs/$(TargetFramework)/$(MSBuildProjectName.Replace('NServiceBus', 'NSB'))" BuildAction="Compile" />
+      <_File Include="$(MSBuildProjectDirectory)\**\*.cs" TargetDir="content/$(TargetFramework)/App_Packages/$(MSBuildProjectName.Replace('NServiceBus', 'NSB')).$(PackageVersion)" BuildAction="Compile" Condition="'$(TargetFramework.Contains(`netcoreapp`))' == 'false' And '$(TargetFramework.Contains(`netstandard`))' == 'false'" />
+      <_File Remove="$(MSBuildProjectDirectory)\obj\**\*.cs" />
+      <_File Remove="@(RemoveSourceFileFromPackage -> '%(FullPath)')" />
+      <TfmSpecificPackageFile Include="@(_File)" PackagePath="%(_File.TargetDir)/%(_File.RecursiveDir)%(_File.FileName)%(_File.Extension)"/>
     </ItemGroup>
   </Target>
 
