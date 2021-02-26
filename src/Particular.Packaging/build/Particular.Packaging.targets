@@ -57,7 +57,9 @@
     <ItemGroup>
       <_File Remove="@(_File)"/>
       <_File Include="$(MSBuildProjectDirectory)\**\*.cs" TargetDir="contentFiles/cs/$(TargetFramework)/$(MSBuildProjectName.Replace('NServiceBus', 'NSB'))" BuildAction="Compile" />
-      <_File Include="$(MSBuildProjectDirectory)\**\*.cs" TargetDir="content/$(TargetFramework)/App_Packages/$(MSBuildProjectName.Replace('NServiceBus', 'NSB')).$(GitVersion_MajorMinorPatch)" BuildAction="Compile" Condition="'$(TargetFramework.Contains(`netcoreapp`))' == 'false' And '$(TargetFramework.Contains(`netstandard`))' == 'false'" />
+      <_File Include="$(MSBuildProjectDirectory)\**\*.cs" TargetDir="content/$(TargetFramework)/App_Packages/$(MSBuildProjectName.Replace('NServiceBus', 'NSB')).$(GitVersion_MajorMinorPatch)" Condition="'$(TargetFramework.Contains(`netcoreapp`))' == 'false' And '$(TargetFramework.Contains(`netstandard`))' == 'false'" />
+      <_File Include="@(AddSourceFileToPackage)" TargetDir="contentFiles/cs/$(TargetFramework)/$(MSBuildProjectName.Replace('NServiceBus', 'NSB'))" BuildAction="Compile" />
+      <_File Include="@(AddSourceFileToPackage)" TargetDir="content/$(TargetFramework)/App_Packages/$(MSBuildProjectName.Replace('NServiceBus', 'NSB')).$(GitVersion_MajorMinorPatch)" Condition="'$(TargetFramework.Contains(`netcoreapp`))' == 'false' And '$(TargetFramework.Contains(`netstandard`))' == 'false'" />
       <_File Remove="$(MSBuildProjectDirectory)\obj\**\*.cs" />
       <_File Remove="@(RemoveSourceFileFromPackage -> '%(FullPath)')" />
       <TfmSpecificPackageFile Include="@(_File)" PackagePath="%(_File.TargetDir)/%(_File.RecursiveDir)%(_File.FileName)%(_File.Extension)"/>
