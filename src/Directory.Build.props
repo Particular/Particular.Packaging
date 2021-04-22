@@ -11,7 +11,7 @@
     <ParticularAnalyzersVersion Condition="'$(ParticularAnalyzersVersion)' == ''">1.1.0</ParticularAnalyzersVersion>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(CI)' != '' Or '$(TEAMCITY_VERSION)' != ''">
+  <PropertyGroup Condition="'$(CI)' != '' Or '$(TEAMCITY_VERSION)' != '' Or '$(GITHUB_ACTIONS)' != ''">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
