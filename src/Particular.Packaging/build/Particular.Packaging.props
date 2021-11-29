@@ -21,12 +21,4 @@
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <ParticularPackagingNuGetMajorVersion>1</ParticularPackagingNuGetMajorVersion>
-    <ParticularPackagingNuGetMajorVersion Condition="'$(NuGetToolVersion)' != ''">$([System.Version]::Parse($(NuGetToolVersion)).Major)</ParticularPackagingNuGetMajorVersion>
-    <ParticularPackagingNuGetMinorVersion>0</ParticularPackagingNuGetMinorVersion>
-    <ParticularPackagingNuGetMinorVersion Condition="'$(NuGetToolVersion)' != ''">$([System.Version]::Parse($(NuGetToolVersion)).Minor)</ParticularPackagingNuGetMinorVersion>
-    <PackageIconUrl Condition="($(ParticularPackagingNuGetMajorVersion) &lt; 5 Or ($(ParticularPackagingNuGetMajorVersion) == 5 And $(ParticularPackagingNuGetMinorVersion) &lt; 3)) And '$(PackageIconUrl)' == ''">https://s3.amazonaws.com/nuget.images/NServiceBus_32.png</PackageIconUrl>
-  </PropertyGroup>
-
 </Project>
