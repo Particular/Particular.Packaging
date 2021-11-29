@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <Target Name="NServiceBusBlockNetCore" BeforeTargets="CoreCompile">
-    <Error Text="Package $(MSBuildThisFileName) does not support .NET Core versions older than 2.1. Please use a newer version." />
+    <Error Text="Package $(MSBuildThisFileName) does not support .NET Core versions older than 3.1. Please use a newer version." />
   </Target>
 
 </Project>

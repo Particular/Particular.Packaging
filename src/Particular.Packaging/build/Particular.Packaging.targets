@@ -21,11 +21,11 @@
     <None Include="$(ParticularPackagingPackagePath)$(PackageIcon)" Condition="Exists('$(ParticularPackagingPackagePath)$(PackageIcon)')" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(BlockInvalidTargetFrameworks)' != 'false' And '$(IncludeBuildOutput)' != 'false' And ('$(PackageType)' == '' Or '$(PackageType)' == 'Dependency') And '$(TargetFrameworks)' == 'net472;netcoreapp2.1'">
+  <ItemGroup Condition="'$(BlockInvalidTargetFrameworks)' != 'false' And '$(IncludeBuildOutput)' != 'false' And ('$(PackageType)' == '' Or '$(PackageType)' == 'Dependency') And '$(TargetFrameworks)' == 'net472;netcoreapp3.1'">
     <None Include="$(BlockInvalidTargetFrameworksPath)BlockNetCore.targets" Condition="Exists('$(BlockInvalidTargetFrameworksPath)BlockNetCore.targets')" Pack="true" PackagePath="build\netcoreapp2.0\$(PackageId).targets" Visible="false" />
     <None Include="$(BlockInvalidTargetFrameworksPath)BlockNetFramework.targets" Condition="Exists('$(BlockInvalidTargetFrameworksPath)BlockNetFramework.targets')" Pack="true" PackagePath="build\net461\$(PackageId).targets" Visible="false" />
     <None Include="$(BlockInvalidTargetFrameworksPath)BlockNetStandard.targets" Condition="Exists('$(BlockInvalidTargetFrameworksPath)BlockNetStandard.targets')" Pack="true" PackagePath="build\netstandard2.0\$(PackageId).targets" Visible="false" />
-    <None Include="$(BlockInvalidTargetFrameworksPath)\_._" Condition="Exists('$(BlockInvalidTargetFrameworksPath)_._')" Pack="true" PackagePath="build\net472;build\netcoreapp2.1" Visible="false" />
+    <None Include="$(BlockInvalidTargetFrameworksPath)\_._" Condition="Exists('$(BlockInvalidTargetFrameworksPath)_._')" Pack="true" PackagePath="build\net472;build\netcoreapp3.1" Visible="false" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(BlockInvalidTargetFrameworks)' != 'false' And '$(IncludeBuildOutput)' != 'false' And ('$(PackageType)' == '' Or '$(PackageType)' == 'Dependency') And '$(IsInnerBuild)' != 'true' And '$(TargetFramework)' == 'net472'">
@@ -57,9 +57,9 @@
     <ItemGroup>
       <_File Remove="@(_File)"/>
       <_File Include="$(MSBuildProjectDirectory)\**\*.cs" TargetDir="contentFiles/cs/$(TargetFramework)/$(MSBuildProjectName.Replace('NServiceBus', 'NSB'))" BuildAction="Compile" />
-      <_File Include="$(MSBuildProjectDirectory)\**\*.cs" TargetDir="content/$(TargetFramework)/App_Packages/$(MSBuildProjectName.Replace('NServiceBus', 'NSB')).$(GitVersion_MajorMinorPatch)" Condition="'$(TargetFramework.Contains(`netcoreapp`))' == 'false' And '$(TargetFramework.Contains(`netstandard`))' == 'false'" />
+      <_File Include="$(MSBuildProjectDirectory)\**\*.cs" TargetDir="content/$(TargetFramework)/App_Packages/$(MSBuildProjectName.Replace('NServiceBus', 'NSB')).$(GitVersion_MajorMinorPatch)" Condition="'$(TargetFramework.Contains(`.`))' == 'false'" />
       <_File Include="@(AddSourceFileToPackage)" TargetDir="contentFiles/cs/$(TargetFramework)/$(MSBuildProjectName.Replace('NServiceBus', 'NSB'))" BuildAction="Compile" />
-      <_File Include="@(AddSourceFileToPackage)" TargetDir="content/$(TargetFramework)/App_Packages/$(MSBuildProjectName.Replace('NServiceBus', 'NSB')).$(GitVersion_MajorMinorPatch)" Condition="'$(TargetFramework.Contains(`netcoreapp`))' == 'false' And '$(TargetFramework.Contains(`netstandard`))' == 'false'" />
+      <_File Include="@(AddSourceFileToPackage)" TargetDir="content/$(TargetFramework)/App_Packages/$(MSBuildProjectName.Replace('NServiceBus', 'NSB')).$(GitVersion_MajorMinorPatch)" Condition="'$(TargetFramework.Contains(`.`))' == 'false'" />
       <_File Remove="$(MSBuildProjectDirectory)\obj\**\*.cs" />
       <_File Remove="@(RemoveSourceFileFromPackage -> '%(FullPath)')" />
       <TfmSpecificPackageFile Include="@(_File)" PackagePath="%(_File.TargetDir)/%(_File.RecursiveDir)%(_File.FileName)%(_File.Extension)"/>
