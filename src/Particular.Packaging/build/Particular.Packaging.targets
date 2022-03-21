@@ -34,12 +34,6 @@
     <None Include="$(BlockInvalidTargetFrameworksPath)\_._" Condition="Exists('$(BlockInvalidTargetFrameworksPath)_._')" Pack="true" PackagePath="build\net472" Visible="false" />
   </ItemGroup>
 
-  <Target Name="FixPackageVersion" AfterTargets="GetVersion" BeforeTargets="GenerateNuspec">
-    <PropertyGroup>
-      <PackageVersion>$(GitVersion_SemVer)</PackageVersion>
-    </PropertyGroup>
-  </Target>
-
   <Target Name="ConvertProjectReferenceVersionsToVersionRanges" AfterTargets="_GetProjectReferenceVersions">
     <PropertyGroup>
       <NumberOfProjectReferences>@(_ProjectReferencesWithVersions->Count())</NumberOfProjectReferences>
@@ -57,19 +51,31 @@
     <ItemGroup>
       <_File Remove="@(_File)"/>
       <_File Include="$(MSBuildProjectDirectory)\**\*.cs" TargetDir="contentFiles/cs/$(TargetFramework)/$(MSBuildProjectName.Replace('NServiceBus', 'NSB'))" BuildAction="Compile" />
-      <_File Include="$(MSBuildProjectDirectory)\**\*.cs" TargetDir="content/$(TargetFramework)/App_Packages/$(MSBuildProjectName.Replace('NServiceBus', 'NSB')).$(GitVersion_MajorMinorPatch)" Condition="'$(TargetFramework.Contains(`.`))' == 'false'" />
+      <_File Include="$(MSBuildProjectDirectory)\**\*.cs" TargetDir="content/$(TargetFramework)/App_Packages/$(MSBuildProjectName.Replace('NServiceBus', 'NSB')).$(MinVerMajor).$(MinVerMinor).$(MinVerPatch)" Condition="'$(TargetFramework.Contains(`.`))' == 'false'" />
       <_File Include="@(AddSourceFileToPackage)" TargetDir="contentFiles/cs/$(TargetFramework)/$(MSBuildProjectName.Replace('NServiceBus', 'NSB'))" BuildAction="Compile" />
-      <_File Include="@(AddSourceFileToPackage)" TargetDir="content/$(TargetFramework)/App_Packages/$(MSBuildProjectName.Replace('NServiceBus', 'NSB')).$(GitVersion_MajorMinorPatch)" Condition="'$(TargetFramework.Contains(`.`))' == 'false'" />
+      <_File Include="@(AddSourceFileToPackage)" TargetDir="content/$(TargetFramework)/App_Packages/$(MSBuildProjectName.Replace('NServiceBus', 'NSB')).$(MinVerMajor).$(MinVerMinor).$(MinVerPatch)" Condition="'$(TargetFramework.Contains(`.`))' == 'false'" />
       <_File Remove="$(MSBuildProjectDirectory)\obj\**\*.cs" />
       <_File Remove="@(RemoveSourceFileFromPackage -> '%(FullPath)')" />
       <TfmSpecificPackageFile Include="@(_File)" PackagePath="%(_File.TargetDir)/%(_File.RecursiveDir)%(_File.FileName)%(_File.Extension)"/>
     </ItemGroup>
   </Target>
 
-  <Target Name="SuppressNuGetPathLengthWarning" AfterTargets="GetVersion" BeforeTargets="CoreCompile" Condition="'$(CI)' != '' Or '$(TEAMCITY_VERSION)' != ''">
-    <PropertyGroup Condition="'$(GitVersion_BranchName)' != 'master' And '$(GitVersion_BranchName.StartsWith(`release-`))' == 'false'">
-      <NoWarn>$(NoWarn);NU5123</NoWarn>
-    </PropertyGroup>
+  <Target Name="AddMinVerAssemblyMetadata" AfterTargets="MinVer">
+    <ItemGroup>
+      <AssemblyMetadata Include="MajorMinorPatch" Value="$(MinVerMajor).$(MinVerMinor).$(MinVerPatch)" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="WriteMinVerProperties" AfterTargets="MinVer" Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ItemGroup>
+      <MinVerProperties Include="MinVerVersion=$(MinVerVersion)" />
+      <MinVerProperties Include="MinVerMajor=$(MinVerMajor)" />
+      <MinVerProperties Include="MinVerMinor=$(MinVerMinor)" />
+      <MinVerProperties Include="MinVerPatch=$(MinVerPatch)" />
+      <MinVerProperties Include="MinVerPreRelease=$(MinVerPreRelease)" />
+      <MinVerProperties Include="MinVerBuildMetadata=$(MinVerBuildMetadata)" />
+    </ItemGroup>
+    <WriteLinesToFile File="$(GITHUB_ENV)" Lines="@(MinVerProperties)" />
   </Target>
 
 </Project>
