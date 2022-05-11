@@ -21,11 +21,11 @@
     <None Include="$(ParticularPackagingPackagePath)$(PackageIcon)" Condition="Exists('$(ParticularPackagingPackagePath)$(PackageIcon)')" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(BlockInvalidTargetFrameworks)' != 'false' And '$(IncludeBuildOutput)' != 'false' And ('$(PackageType)' == '' Or '$(PackageType)' == 'Dependency') And '$(TargetFrameworks)' == 'net472;netcoreapp3.1'">
+  <ItemGroup Condition="'$(BlockInvalidTargetFrameworks)' != 'false' And '$(IncludeBuildOutput)' != 'false' And ('$(PackageType)' == '' Or '$(PackageType)' == 'Dependency') And '$(TargetFrameworks)' == 'net472;net6.0'">
     <None Include="$(BlockInvalidTargetFrameworksPath)BlockNetCore.targets" Condition="Exists('$(BlockInvalidTargetFrameworksPath)BlockNetCore.targets')" Pack="true" PackagePath="build\netcoreapp2.0\$(PackageId).targets" Visible="false" />
     <None Include="$(BlockInvalidTargetFrameworksPath)BlockNetFramework.targets" Condition="Exists('$(BlockInvalidTargetFrameworksPath)BlockNetFramework.targets')" Pack="true" PackagePath="build\net461\$(PackageId).targets" Visible="false" />
     <None Include="$(BlockInvalidTargetFrameworksPath)BlockNetStandard.targets" Condition="Exists('$(BlockInvalidTargetFrameworksPath)BlockNetStandard.targets')" Pack="true" PackagePath="build\netstandard2.0\$(PackageId).targets" Visible="false" />
-    <None Include="$(BlockInvalidTargetFrameworksPath)\_._" Condition="Exists('$(BlockInvalidTargetFrameworksPath)_._')" Pack="true" PackagePath="build\net472;build\netcoreapp3.1" Visible="false" />
+    <None Include="$(BlockInvalidTargetFrameworksPath)\_._" Condition="Exists('$(BlockInvalidTargetFrameworksPath)_._')" Pack="true" PackagePath="build\net472;build\net6.0" Visible="false" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(BlockInvalidTargetFrameworks)' != 'false' And '$(IncludeBuildOutput)' != 'false' And ('$(PackageType)' == '' Or '$(PackageType)' == 'Dependency') And '$(IsInnerBuild)' != 'true' And '$(TargetFramework)' == 'net472'">

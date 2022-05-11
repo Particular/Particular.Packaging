@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <Target Name="NServiceBusBlockNetStandard" BeforeTargets="CoreCompile">
-    <Error Text="Package $(MSBuildThisFileName) does not support .NET Standard. Please use .NET Framework, .NET Core, or .NET instead." />
+    <Error Text="Package $(MSBuildThisFileName) does not support .NET Standard. Please use .NET Framework or .NET instead." />
   </Target>
 
 </Project>
