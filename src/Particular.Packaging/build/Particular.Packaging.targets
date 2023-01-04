@@ -66,7 +66,7 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="WriteMinVerProperties" AfterTargets="MinVer" Condition="'$(GITHUB_ACTIONS)' == 'true' And '$(WriteMinVerProperties)' != 'false'">
+  <Target Name="WriteMinVerProperties" DependsOnTargets="MinVer" AfterTargets="Build" Condition="'$(GITHUB_ACTIONS)' == 'true' And '$(WriteMinVerProperties)' != 'false' And '$(IsInnerBuild)' != 'true'">
     <ItemGroup>
       <MinVerProperties Include="MinVerVersion=$(MinVerVersion)" />
       <MinVerProperties Include="MinVerMajor=$(MinVerMajor)" />
