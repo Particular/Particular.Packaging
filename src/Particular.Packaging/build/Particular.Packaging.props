@@ -11,8 +11,8 @@
     <Copyright Condition="'$(Copyright)' == ''">© 2010-$([System.DateTime]::UtcNow.ToString(yyyy)) NServiceBus Ltd. All rights reserved.</Copyright>
     <PackageTags Condition="'$(PackageTags)' == ''">nservicebus messaging</PackageTags>
     <PackageIcon Condition="'$(PackageIcon)' == ''">NServiceBus.png</PackageIcon>
-	<PackageReadmeFile Condition="Exists('..\..\NuGet.README.md')">NuGet.README.md</PackageReadmeFile>
-	<PackageOutputPath Condition="'$(PackageOutputPath)' == ''">..\..\nugets</PackageOutputPath>
+    <PackageReadmeFile Condition="Exists('..\..\NuGet.README.md')">NuGet.README.md</PackageReadmeFile>
+    <PackageOutputPath Condition="'$(PackageOutputPath)' == ''">..\..\nugets</PackageOutputPath>
     <GeneratePackageOnBuild Condition="'$(GeneratePackageOnBuild)' == ''">true</GeneratePackageOnBuild>
     <GenerateDocumentationFile Condition="'$(GenerateDocumentationFile)' == ''">true</GenerateDocumentationFile>
     <DebugType Condition="'$(DebugType)' == ''">embedded</DebugType>
