@@ -11,6 +11,7 @@
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <BlockInvalidTargetFrameworks>false</BlockInvalidTargetFrameworks>
+    <PackageReadmeFile />
   </PropertyGroup>
 
   <ItemGroup>
