@@ -17,9 +17,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\$(PackageLicenseFile)" Condition="Exists('..\..\$(PackageLicenseFile)')" Pack="true" PackagePath="$(PackageLicenseFile)" Visible="false" />
+    <None Include="..\..\$(PackageLicenseFile)" Condition="'$(PackageLicenseFile)' != '' And Exists('..\..\$(PackageLicenseFile)')" Pack="true" PackagePath="$(PackageLicenseFile)" Visible="false" />
     <None Include="..\..\$(PackageReadmeFile)" Condition="'$(PackageReadmeFile)' != '' And Exists('..\..\$(PackageReadmeFile)')" Pack="true" PackagePath="$(PackageReadmeFile)" Visible="false" />
-    <None Include="$(ParticularPackagingPackagePath)$(PackageIcon)" Condition="Exists('$(ParticularPackagingPackagePath)$(PackageIcon)')" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
+    <None Include="$(ParticularPackagingPackagePath)$(PackageIcon)" Condition="'$(PackageIcon)' != '' And Exists('$(ParticularPackagingPackagePath)$(PackageIcon)')" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(BlockInvalidTargetFrameworks)' != 'false' And '$(IncludeBuildOutput)' != 'false' And ('$(PackageType)' == '' Or '$(PackageType)' == 'Dependency') And '$(TargetFrameworks)' == 'net472;net6.0'">
