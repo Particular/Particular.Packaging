@@ -40,6 +40,6 @@ jobs:
           name: nugets
           path: nugets/*
           retention-days: 1
-      - name: Push packages to MyGet
+      - name: Push packages
         run: dotnet nuget push nugets\*.nupkg --api-key ${{ secrets.FEEDZIO_PUBLISH_API_KEY }} --source "${{ vars.PARTICULAR_PACKAGES_FEED_URL }}"
         shell: pwsh
