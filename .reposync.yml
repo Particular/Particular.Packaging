@@ -1,5 +1,6 @@
 exclusions:
 - LICENSE.md
+- Package-README.md
 - src/NServiceBus.snk
 - src/NServiceBusTests.snk
 - .github/workflows/virus-scan.yml
