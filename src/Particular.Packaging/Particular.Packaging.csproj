@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;netstandard1.0</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -16,7 +16,6 @@
   <ItemGroup>
     <PackageReference Include="MinVer" Version="4.3.0" PrivateAssets="None" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="None" />
-    <PackageReference Update="NETStandard.Library" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
