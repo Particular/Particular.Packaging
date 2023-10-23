@@ -8,7 +8,7 @@
     <Company Condition="'$(Company)' == ''">NServiceBus Ltd</Company>
     <PackageLicenseFile Condition="'$(PackageLicenseFile)' == ''">LICENSE.md</PackageLicenseFile>
     <PackageRequireLicenseAcceptance Condition="'$(PackageRequireLicenseAcceptance)' == ''">true</PackageRequireLicenseAcceptance>
-    <Copyright Condition="'$(Copyright)' == ''">© 2010-$([System.DateTime]::UtcNow.ToString(yyyy)) NServiceBus Ltd. All rights reserved.</Copyright>
+    <Copyright Condition="'$(Copyright)' == ''">© NServiceBus Ltd. All rights reserved.</Copyright>
     <PackageTags Condition="'$(PackageTags)' == ''">nservicebus messaging</PackageTags>
     <PackageIcon Condition="'$(PackageIcon)' == ''">NServiceBus.png</PackageIcon>
     <PackageReadmeFile Condition="'$(PackageReadmeFile)' == ''">Package-README.md</PackageReadmeFile>
