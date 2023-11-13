@@ -79,4 +79,10 @@
     <WriteLinesToFile File="$(GITHUB_ENV)" Lines="@(MinVerProperties)" />
   </Target>
 
+  <Target Name="WorkaroundForTestHostBeingAddedAsContent" BeforeTargets="_GetPackageFiles" Condition="'$(IsTestProject)' == 'true'">
+    <ItemGroup>
+      <Content Update="**\testhost.*" Pack="false" />
+    </ItemGroup>
+  </Target>
+
 </Project>
