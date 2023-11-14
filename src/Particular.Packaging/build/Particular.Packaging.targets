@@ -19,6 +19,7 @@
   <ItemGroup>
     <None Include="..\..\$(PackageLicenseFile)" Condition="'$(PackageLicenseFile)' != '' And Exists('..\..\$(PackageLicenseFile)')" Pack="true" PackagePath="$(PackageLicenseFile)" Visible="false" />
     <None Include="..\..\$(PackageReadmeFile)" Condition="'$(PackageReadmeFile)' != '' And Exists('..\..\$(PackageReadmeFile)')" Pack="true" PackagePath="$(PackageReadmeFile)" Visible="false" />
+    <None Include="..\..\THIRD-PARTY-NOTICES.txt" Condition="Exists('..\..\THIRD-PARTY-NOTICES.txt')" Pack="true" PackagePath="" Visible="false" />
     <None Include="$(ParticularPackagingPackagePath)$(PackageIcon)" Condition="'$(PackageIcon)' != '' And Exists('$(ParticularPackagingPackagePath)$(PackageIcon)')" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
   </ItemGroup>
 
