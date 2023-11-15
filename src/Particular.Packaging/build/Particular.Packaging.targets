@@ -86,4 +86,8 @@
     </ItemGroup>
   </Target>
 
+  <Target Name="VerifySdkVersion" BeforeTargets="CoreCompile" Condition="$([MSBuild]::VersionLessThan($(NETCoreSdkVersion), '8.0.100'))">
+    <Error Text="Particular.Packaging requires .NET SDK 8.0.100 or greater. Version being used: $(NETCoreSdkVersion)" />
+  </Target>
+
 </Project>
