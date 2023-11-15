@@ -17,9 +17,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\$(PackageLicenseFile)" Condition="'$(PackageLicenseFile)' != '' And Exists('..\..\$(PackageLicenseFile)')" Pack="true" PackagePath="$(PackageLicenseFile)" Visible="false" />
-    <None Include="..\..\$(PackageReadmeFile)" Condition="'$(PackageReadmeFile)' != '' And Exists('..\..\$(PackageReadmeFile)')" Pack="true" PackagePath="$(PackageReadmeFile)" Visible="false" />
-    <None Include="$(ParticularPackagingPackagePath)$(PackageIcon)" Condition="'$(PackageIcon)' != '' And Exists('$(ParticularPackagingPackagePath)$(PackageIcon)')" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
+    <None Include="..\..\$(PackageLicenseFile)" Condition="'$(PackageLicenseFile)' != '' And Exists('..\..\$(PackageLicenseFile)')" Pack="true" PackagePath="" Visible="false" />
+    <None Include="..\..\$(PackageReadmeFile)" Condition="'$(PackageReadmeFile)' != '' And Exists('..\..\$(PackageReadmeFile)')" Pack="true" PackagePath="" Visible="false" />
+    <None Include="..\..\THIRD-PARTY-NOTICES.txt" Condition="Exists('..\..\THIRD-PARTY-NOTICES.txt')" Pack="true" PackagePath="" Visible="false" />
+    <None Include="$(ParticularPackagingPackagePath)$(PackageIcon)" Condition="'$(PackageIcon)' != '' And Exists('$(ParticularPackagingPackagePath)$(PackageIcon)')" Pack="true" PackagePath="" Visible="false" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(BlockInvalidTargetFrameworks)' != 'false' And '$(IncludeBuildOutput)' != 'false' And ('$(PackageType)' == '' Or '$(PackageType)' == 'Dependency') And '$(TargetFrameworks)' == 'net472;net6.0'">
@@ -77,6 +78,16 @@
       <MinVerProperties Include="MinVerBuildMetadata=$(MinVerBuildMetadata)" />
     </ItemGroup>
     <WriteLinesToFile File="$(GITHUB_ENV)" Lines="@(MinVerProperties)" />
+  </Target>
+
+  <Target Name="WorkaroundForTestHostBeingAddedAsContent" BeforeTargets="_GetPackageFiles" Condition="'$(IsTestProject)' == 'true'">
+    <ItemGroup>
+      <Content Update="**\testhost.*" Pack="false" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="VerifySdkVersion" BeforeTargets="CoreCompile" Condition="$([MSBuild]::VersionLessThan($(NETCoreSdkVersion), '8.0.100'))">
+    <Error Text="Particular.Packaging requires .NET SDK 8.0.100 or greater. Version being used: $(NETCoreSdkVersion)" />
   </Target>
 
 </Project>
