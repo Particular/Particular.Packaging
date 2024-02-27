@@ -19,6 +19,7 @@
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <ParticularPackagingTasksPath>$(MSBuildThisFileDirectory)tasks\Particular.Packaging.Tasks.dll</ParticularPackagingTasksPath>
   </PropertyGroup>
 
 </Project>

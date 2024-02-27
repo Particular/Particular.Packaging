@@ -14,6 +14,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Particular.Packaging.Tasks\Particular.Packaging.Tasks.csproj" ReferenceOutputAssembly="false" Private="false" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MinVer" Version="4.3.0" PrivateAssets="None" />
   </ItemGroup>
 
@@ -26,6 +30,10 @@
   <ItemGroup>
     <None Remove="BlockInvalidTargetFrameworks\*" />
     <Content Include="BlockInvalidTargetFrameworks\*" PackagePath="BlockInvalidTargetFrameworks" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\Particular.Packaging.Tasks\bin\$(Configuration)\netstandard2.0\Particular.Packaging.Tasks.dll" Pack="true" PackagePath="build\tasks" Visible="false" />
   </ItemGroup>
 
 </Project>
