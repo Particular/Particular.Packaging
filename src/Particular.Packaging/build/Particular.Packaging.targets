@@ -36,6 +36,8 @@
     <None Include="$(BlockInvalidTargetFrameworksPath)\_._" Condition="Exists('$(BlockInvalidTargetFrameworksPath)_._')" Pack="true" PackagePath="build\net472" Visible="false" />
   </ItemGroup>
 
+  <UsingTask Condition="'$(ParticularPackagingTasksPath)' != '' And $(EnableRangeFixup) != false" TaskName="Particular.Packaging.Tasks.ConvertToVersionRange" AssemblyFile="$(ParticularPackagingTasksPath)" />
+
   <Target Name="ConvertProjectReferenceVersionsToVersionRanges" AfterTargets="_GetProjectReferenceVersions">
     <PropertyGroup>
       <NumberOfProjectReferences>@(_ProjectReferencesWithVersions->Count())</NumberOfProjectReferences>
@@ -47,6 +49,22 @@
       <_ProjectReferencesWithVersions Remove="@(_ProjectReferencesWithVersions)" />
       <_ProjectReferencesWithVersions Include="@(_ProjectReferencesWithVersionRanges)" />
     </ItemGroup>
+  </Target>
+
+  <Target Name="Blah" BeforeTargets="CollectPackageReferences" Condition="$(EnableRangeFixup) != false">
+    <PropertyGroup>
+      <NumberOfPackageReferences>@(PackageReference->Count())</NumberOfPackageReferences>
+    </PropertyGroup>
+
+    <ConvertToVersionRange Condition="$(NumberOfPackageReferences) &gt; 0" References="@(PackageReference)">
+      <Output TaskParameter="ReferencesWithVersionRanges" ItemName="_PackageReferencesWithVersionRanges" />
+    </ConvertToVersionRange>
+
+    <ItemGroup Condition="$(NumberOfPackageReferences) &gt; 0">
+      <PackageReference Remove="@(PackageReference)" />
+      <PackageReference Include="@(_PackageReferencesWithVersionRanges)" />
+    </ItemGroup>
+
   </Target>
 
   <Target Name="AddSourceFilesToPackage">

@@ -11,14 +11,15 @@
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <BlockInvalidTargetFrameworks>false</BlockInvalidTargetFrameworks>
+    <ParticularPackagingTasksPath>F:\Code\Particular.Packaging\src\Particular.Packaging.Tasks\bin\Debug\netstandard2.0\Particular.Packaging.Tasks.dll</ParticularPackagingTasksPath>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <ProjectReference Include="..\Particular.Packaging.Tasks\Particular.Packaging.Tasks.csproj" ReferenceOutputAssembly="false" Private="false" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
-    <PackageReference Include="MinVer" Version="6.0.0" PrivateAssets="None" />
+    <PackageReference Include="MinVer" Version="4.3.0" PrivateAssets="None" />
   </ItemGroup>
 
   <ItemGroup>
