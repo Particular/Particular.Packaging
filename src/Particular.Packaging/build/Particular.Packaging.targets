@@ -77,7 +77,7 @@
       <MinVerProperties Include="MinVerPreRelease=$(MinVerPreRelease)" />
       <MinVerProperties Include="MinVerBuildMetadata=$(MinVerBuildMetadata)" />
     </ItemGroup>
-    <WriteLinesToFile File="$(GITHUB_ENV)" Lines="@(MinVerProperties)" />
+    <WriteLinesToFile File="$(GITHUB_ENV)" Lines="@(MinVerProperties)" ContinueOnError="WarnAndContinue" />
   </Target>
 
   <Target Name="WorkaroundForTestHostBeingAddedAsContent" BeforeTargets="_GetPackageFiles" Condition="'$(IsTestProject)' == 'true'">
