@@ -80,6 +80,12 @@
     <WriteLinesToFile File="$(GITHUB_ENV)" Lines="@(MinVerProperties)" ContinueOnError="WarnAndContinue" />
   </Target>
 
+  <Target Name="UpdateSbomGenerationPackageVersion" AfterTargets="MinVer">
+    <PropertyGroup>
+      <SbomGenerationPackageVersion>$(MinVerVersion)</SbomGenerationPackageVersion>
+    </PropertyGroup>
+  </Target>
+
   <Target Name="WorkaroundForTestHostBeingAddedAsContent" BeforeTargets="_GetPackageFiles" Condition="'$(IsTestProject)' == 'true'">
     <ItemGroup>
       <Content Update="**\testhost.*" Pack="false" />
