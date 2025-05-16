@@ -21,6 +21,7 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <ParticularPackagingTasksPath>$(MSBuildThisFileDirectory)tasks\Particular.Packaging.Tasks.dll</ParticularPackagingTasksPath>
     <WarnOnPackingNonPackableProject>false</WarnOnPackingNonPackableProject>
+    <GenerateSBOM Condition="'$(GenerateSBOM)' == '' And '$(Configuration)' == 'Release'">true</GenerateSBOM>
   </PropertyGroup>
 
 </Project>
