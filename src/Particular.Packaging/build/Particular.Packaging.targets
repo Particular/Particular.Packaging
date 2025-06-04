@@ -80,11 +80,11 @@
     <WriteLinesToFile File="$(GITHUB_ENV)" Lines="@(MinVerProperties)" ContinueOnError="WarnAndContinue" />
   </Target>
 
-  <Target Name="AddReleaseNotesLink" AfterTargets="InitializeSourceControlInformationFromSourceControlManager">
-    <PropertyGroup>      
-      <ReleaseNotesSourceControlURL Condition="$(ScmRepositoryUrl.EndsWith('.git'))">$(ScmRepositoryUrl.SubString(0, $(ScmRepositoryUrl.LastIndexOf(".git"))))</ReleaseNotesSourceControlURL>
-      <ReleaseNotesSourceControlURL Condition="!$(ScmRepositoryUrl.EndsWith('.git'))">$(ScmRepositoryUrl)</ReleaseNotesSourceControlURL>
-      <PackageReleaseNotes>$(ReleaseNotesSourceControlURL)/releases/$(MinVerVersion)</PackageReleaseNotes>
+  <Target Name="AddReleaseNotesLink" BeforeTargets="GenerateNuspec">
+    <PropertyGroup>
+      <ReleaseNotesSourceControlUrl>$(ScmRepositoryUrl)</ReleaseNotesSourceControlUrl>
+      <ReleaseNotesSourceControlUrl Condition="$(ReleaseNotesSourceControlUrl.EndsWith('.git'))">$(ReleaseNotesSourceControlUrl.SubString(0, $(ReleaseNotesSourceControlUrl.LastIndexOf(".git"))))</ReleaseNotesSourceControlUrl>
+      <PackageReleaseNotes>$(ReleaseNotesSourceControlUrl)/releases/tag/$(MinVerVersion)</PackageReleaseNotes>
     </PropertyGroup>
   </Target>
 
