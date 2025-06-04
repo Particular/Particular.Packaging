@@ -80,7 +80,15 @@
     <WriteLinesToFile File="$(GITHUB_ENV)" Lines="@(MinVerProperties)" ContinueOnError="WarnAndContinue" />
   </Target>
 
-  <Target Name="UpdateSbomGenerationPackageVersion" AfterTargets="MinVer">
+  <Target Name="AddReleaseNotesLink" BeforeTargets="GenerateNuspec">
+    <PropertyGroup>
+      <ReleaseNotesSourceControlUrl>$(ScmRepositoryUrl)</ReleaseNotesSourceControlUrl>
+      <ReleaseNotesSourceControlUrl Condition="$(ReleaseNotesSourceControlUrl.EndsWith('.git'))">$(ReleaseNotesSourceControlUrl.SubString(0, $(ReleaseNotesSourceControlUrl.LastIndexOf(".git"))))</ReleaseNotesSourceControlUrl>
+      <PackageReleaseNotes>$(ReleaseNotesSourceControlUrl)/releases/tag/$(MinVerVersion)</PackageReleaseNotes>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="UpdateSbomGenerationPackageVersion" AfterTargets="MinVer;">
     <PropertyGroup>
       <SbomGenerationPackageVersion>$(MinVerVersion)</SbomGenerationPackageVersion>
     </PropertyGroup>
