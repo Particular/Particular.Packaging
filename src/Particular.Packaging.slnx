@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Custom.Build.props" />
+  </Folder>
+  <Project Path="Particular.Packaging.Tasks/Particular.Packaging.Tasks.csproj" />
+  <Project Path="Particular.Packaging/Particular.Packaging.csproj" />
+</Solution>
